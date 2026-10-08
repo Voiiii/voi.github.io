@@ -1,8 +1,10 @@
 :root {
     color-scheme: light;
-    font-family: Georgia, "Times New Roman", serif;
-    color: #29233a;
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    color: #30283b;
     background: #d8c8ed;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
 }
 
 * {
@@ -10,76 +12,373 @@
 }
 
 body {
+    min-width: 320px;
     min-height: 100vh;
     margin: 0;
+    background-color: #d8c8ed;
+    background-image:
+        linear-gradient(rgb(255 255 255 / 14%) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 255 255 / 14%) 1px, transparent 1px),
+        repeating-linear-gradient(135deg, transparent 0 42px, rgb(255 255 255 / 10%) 43px, transparent 44px);
+    background-size: 32px 32px, 32px 32px, auto;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #45645b;
+    outline-offset: 4px;
+}
+
+.desktop-shell {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #d8c8ed;
-    background-image: repeating-linear-gradient(
-        135deg,
-        transparent 0,
-        transparent 38px,
-        rgb(255 255 255 / 13%) 39px,
-        transparent 40px
-    );
 }
 
-header,
-main,
-footer {
-    width: min(100% - 3rem, 68rem);
-    margin-inline: auto;
+.menu-bar {
+    min-height: 58px;
+    padding: 0 clamp(1rem, 4vw, 3.5rem);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgb(48 40 59 / 15%);
+    background: rgb(250 248 252 / 78%);
+    color: #30283b;
+    font-size: 0.78rem;
 }
 
-header {
-    padding-top: clamp(3rem, 10vh, 7rem);
+.site-name {
+    color: inherit;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    text-decoration: none;
 }
 
-header::before {
-    display: block;
-    width: 3rem;
-    height: 0.25rem;
-    margin-bottom: 1.5rem;
-    background: #697b55;
-    content: "";
+.menu-caption {
+    color: #71687a;
 }
 
-h1 {
-    max-width: 12ch;
-    margin: 0;
-    font-size: clamp(3.25rem, 8vw, 6.75rem);
-    font-weight: 400;
-    line-height: 0.98;
+.menu-status {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4b665b;
 }
 
-main {
+.status-light {
+    width: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #739578;
+    box-shadow: 0 0 0 3px rgb(115 149 120 / 18%);
+}
+
+.desktop {
+    width: min(100% - 3rem, 1120px);
     flex: 1;
-    padding-block: 2rem 4rem;
+    margin-inline: auto;
+    padding-block: clamp(2rem, 7vh, 5rem);
+    display: grid;
+    grid-template-columns: 128px minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 7vw, 6rem);
 }
 
-main p {
+.desktop-icons {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+}
+
+.desktop-icon {
+    width: 108px;
+    min-height: 105px;
+    padding: 0.55rem 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: #30283b;
+    font: inherit;
+    font-size: 0.78rem;
+    line-height: 1.25;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.desktop-icon:hover,
+.desktop-icon[aria-pressed="true"] {
+    border-color: rgb(255 255 255 / 72%);
+    background: rgb(255 255 255 / 36%);
+}
+
+.desktop-icon:hover {
+    transform: translateY(-2px);
+}
+
+.icon-art {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgb(48 40 59 / 8%);
+    border-radius: 13px;
+    box-shadow: 0 4px 10px rgb(48 40 59 / 12%), inset 0 1px rgb(255 255 255 / 72%);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.icon-home {
+    background: #f4d58b;
+    color: #725936;
+}
+
+.icon-about {
+    background: #c1d8c6;
+    color: #41634e;
+}
+
+.icon-things {
+    background: #f0aaa0;
+    color: #773f4b;
+}
+
+.icon-notebook {
+    background: #b7cfe0;
+    color: #3f5e72;
+}
+
+.window-area {
+    width: 100%;
+    min-height: 350px;
+    display: grid;
+    place-items: center;
+}
+
+.window {
+    width: min(100%, 650px);
+    min-height: 330px;
+    overflow: hidden;
+    border: 1px solid rgb(48 40 59 / 14%);
+    border-radius: 8px;
+    background: #fffdf9;
+    box-shadow: 0 22px 56px rgb(61 44 78 / 19%), 0 3px 8px rgb(61 44 78 / 9%);
+    animation: arrive 220ms ease-out both;
+}
+
+.window[hidden],
+.empty-desktop[hidden] {
+    display: none;
+}
+
+.window-bar {
+    height: 46px;
+    padding-inline: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-bottom: 1px solid #e9e3e6;
+    background: #f7f3ef;
+}
+
+.window-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.window-dots i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d98981;
+}
+
+.window-dots i:nth-child(2) {
+    background: #e8c26c;
+}
+
+.window-dots i:nth-child(3) {
+    background: #91b28c;
+}
+
+.window-label {
+    color: #786f78;
+    font-size: 0.72rem;
+}
+
+.close-window {
+    width: 30px;
+    height: 30px;
+    justify-self: end;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #665d67;
+    font: inherit;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.close-window:hover {
+    background: #eadfdc;
+}
+
+.window-content {
+    padding: clamp(2rem, 6vw, 4.5rem);
+}
+
+.eyebrow {
+    margin: 0 0 1.15rem;
+    color: #6d8269;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.window-content h1,
+.window-content h2 {
+    max-width: 13ch;
+    margin: 0 0 1.25rem;
+    color: #332a3d;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 3.6rem;
+    font-weight: 400;
+    line-height: 1.05;
+}
+
+.intro {
     max-width: 34rem;
     margin: 0;
-    font-size: clamp(1.2rem, 2.4vw, 1.65rem);
-    line-height: 1.55;
+    color: #514958;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+    line-height: 1.65;
 }
 
-footer {
-    padding-block: 1.25rem 2rem;
-    border-top: 1px solid rgb(41 35 58 / 25%);
-    color: #49415a;
-    font-family: Arial, sans-serif;
-    font-size: 0.85rem;
+.window-hint {
+    margin: 2rem 0 0;
+    color: #807781;
+    font-size: 0.8rem;
 }
 
-footer p {
+.empty-desktop {
+    max-width: 24rem;
     margin: 0;
+    color: #514958;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+    text-align: center;
 }
 
-@media (max-width: 480px) {
-    header,
-    main,
-    footer {
-        width: min(100% - 2rem, 68rem);
+.taskbar {
+    min-height: 54px;
+    padding: 0 clamp(1rem, 4vw, 3.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgb(48 40 59 / 14%);
+    background: rgb(250 248 252 / 72%);
+    color: #665d70;
+    font-size: 0.75rem;
+}
+
+.taskbar-mark {
+    margin-right: 0.35rem;
+    color: #758b68;
+}
+
+@keyframes arrive {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 680px) {
+    .menu-bar {
+        gap: 0.75rem;
+    }
+
+    .menu-caption {
+        display: none;
+    }
+
+    .desktop {
+        width: min(100% - 2rem, 36rem);
+        grid-template-columns: minmax(0, 1fr);
+        align-content: start;
+        gap: 1rem;
+        padding-block: 1rem 1.5rem;
+    }
+
+    .desktop-icons {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.2rem;
+    }
+
+    .desktop-icon {
+        width: 100%;
+        min-height: 92px;
+        padding-inline: 0.15rem;
+        font-size: 0.69rem;
+    }
+
+    .icon-art {
+        width: 46px;
+        height: 46px;
+        border-radius: 11px;
+        font-size: 1.75rem;
+    }
+
+    .window-area {
+        min-height: 330px;
+        align-items: start;
+    }
+
+    .window {
+        min-height: 310px;
+    }
+
+    .window-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .window-content h1,
+    .window-content h2 {
+        font-size: 2.35rem;
+    }
+
+    .intro {
+        font-size: 1.12rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

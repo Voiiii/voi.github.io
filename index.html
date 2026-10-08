@@ -3,29 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    
-    <!-- Link to your external CSS stylesheet -->
+    <title>Voi's Cozy Space</title>
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Favicon link (optional) -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <div class="desktop-shell">
+        <header class="menu-bar">
+            <a class="site-name" href="#home" aria-label="Voi's Cozy Space home">voi's cozy space</a>
+            <span class="menu-caption">a little corner of the internet</span>
+            <span class="menu-status"><span class="status-light"></span> ready to explore</span>
+        </header>
 
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
+        <main class="desktop" id="home">
+            <nav class="desktop-icons" aria-label="Website sections">
+                <button class="desktop-icon" type="button" data-open="welcome" aria-controls="window-welcome" aria-pressed="true">
+                    <span class="icon-art icon-home" aria-hidden="true">⌂</span>
+                    <span>Welcome</span>
+                </button>
+                <button class="desktop-icon" type="button" data-open="about" aria-controls="window-about" aria-pressed="false">
+                    <span class="icon-art icon-about" aria-hidden="true">✳</span>
+                    <span>About Voi</span>
+                </button>
+                <button class="desktop-icon" type="button" data-open="things" aria-controls="window-things" aria-pressed="false">
+                    <span class="icon-art icon-things" aria-hidden="true">▤</span>
+                    <span>Things to know</span>
+                </button>
+                <button class="desktop-icon" type="button" data-open="notebook" aria-controls="window-notebook" aria-pressed="false">
+                    <span class="icon-art icon-notebook" aria-hidden="true">✎</span>
+                    <span>Notebook</span>
+                </button>
+            </nav>
 
-    <main>
-        <p>This is where your primary page content goes.</p>
-    </main>
+            <div class="window-area" aria-label="Open section">
+                <section class="window" id="window-welcome" data-panel="welcome" aria-labelledby="title-welcome">
+                    <div class="window-bar">
+                        <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="window-label">welcome.txt</span>
+                        <button class="close-window" type="button" data-close aria-label="Close Welcome window">×</button>
+                    </div>
+                    <div class="window-content">
+                        <p class="eyebrow">YOU FOUND YOUR WAY</p>
+                        <h1 id="title-welcome">Hello there, traveler.</h1>
+                        <p class="intro">Nice of you to stop by and get to know me. This is Voi's cozy little corner of the internet.</p>
+                        <p class="window-hint">Pick an icon on the desktop to explore.</p>
+                    </div>
+                </section>
 
-    <footer>
-        <p>&copy; 2026 Your Name</p>
-    </footer>
+                <section class="window" id="window-about" data-panel="about" aria-labelledby="title-about" hidden>
+                    <div class="window-bar">
+                        <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="window-label">about-voi.txt</span>
+                        <button class="close-window" type="button" data-close aria-label="Close About Voi window">×</button>
+                    </div>
+                    <div class="window-content">
+                        <p class="eyebrow">A SHORT INTRODUCTION</p>
+                        <h2 id="title-about">A little about Voi</h2>
+                        <p class="intro">This space is where I'll share a bit about myself. More of my story is on its way.</p>
+                    </div>
+                </section>
 
-    <!-- Link to your external JavaScript file (loaded at the end for performance) -->
+                <section class="window" id="window-things" data-panel="things" aria-labelledby="title-things" hidden>
+                    <div class="window-bar">
+                        <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="window-label">things-to-know.txt</span>
+                        <button class="close-window" type="button" data-close aria-label="Close Things to know window">×</button>
+                    </div>
+                    <div class="window-content">
+                        <p class="eyebrow">GOOD TO KNOW</p>
+                        <h2 id="title-things">Things to know</h2>
+                        <p class="intro">A place for the little details, favorite things, and other bits I'd like to share. Check back soon for notes.</p>
+                    </div>
+                </section>
+
+                <section class="window" id="window-notebook" data-panel="notebook" aria-labelledby="title-notebook" hidden>
+                    <div class="window-bar">
+                        <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="window-label">notebook.txt</span>
+                        <button class="close-window" type="button" data-close aria-label="Close Notebook window">×</button>
+                    </div>
+                    <div class="window-content">
+                        <p class="eyebrow">OPEN PAGE</p>
+                        <h2 id="title-notebook">The notebook</h2>
+                        <p class="intro">A quiet spot for thoughts, updates, and small discoveries. The first note is still being written.</p>
+                    </div>
+                </section>
+                <p class="empty-desktop" hidden>All windows are closed. Choose an icon to open one.</p>
+            </div>
+        </main>
+
+        <footer class="taskbar">
+            <span><span class="taskbar-mark" aria-hidden="true">✿</span> Voi's Cozy Space</span>
+            <span>© 2026 Voi</span>
+        </footer>
     <script src="script.js"></script>
+    </div>
 </body>
 </html>
